@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+:root {
+    --bg: #EBE6DC;
+    --text: #B5A789;
+}
+
+@font-face {
+    font-family: druk;
+    src: url("./font/Druk\ Condensed\ Family/DrukCond-Super-Trial.otf") format("opentype");
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.wrapper {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 19rem;
+    font-family: 'druk', sans-serif;
+    letter-spacing: .5rem;
+}
+
+hr {
+    width: 80%;
+    margin: 0 10%;
+    box-sizing: border-box;
+    color: rgba(196, 187, 166, .3);
+}
+
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* cursor: pointer; */
+    line-height: 1;
+}
+.text {
+    display: flex;
+    align-items: center;
+}
+
+img {
+    border-radius: .5rem;
+    object-fit: cover;
+    height: 11.7rem;
+    height: 18rem;
+    margin: 0 1.5rem;
+}
+
+.i3 img, .i4 img {
+    width: 10rem;
+}
+
+.text span {
+    position: relative;
+}
+.text span::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #EBE6DC;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform-origin: bottom;
+    animation: revealCharacter 2.4s forwards;
+    animation-timing-function: cubic-bezier(.12,.76,.09,.96);
+}
+
+.text span:nth-child(odd)::after {
+    animation-delay: .7s;
+}
+
+.text span:nth-child(5)::after {
+    animation-delay: .6s;
+}
+.text span:nth-child(7)::after {
+    animation-delay: 1s;
+}
+.text span:nth-child(9)::after {
+    animation-delay: .3s;
+}
+.text span:nth-child(3)::after {
+    animation-delay: .4s;
+}
+.text span:nth-child(6)::after {
+    animation-delay: .1s;
+}
+.text span:nth-child(10)::after {
+    animation-delay: .5s;
+}
+.text span:nth-child(1)::after {
+    animation-delay: 1.1s;
+}
+.text span:nth-child(2)::after {
+    animation-delay: 1.2s;
+}
+.text span:nth-child(4)::after {
+    animation-delay: 1.3s;
+}
+.text span:nth-child(8)::after {
+    animation-delay: 1.4s;
+}
+.text span:nth-child(11)::after {
+    animation-delay: .7s;
+}
+.text span:nth-child(12)::after {
+    animation-delay: 0.8s;
+}
+.text span:nth-child(13)::after {
+    animation-delay: 1.5s;
+}
+.text span:nth-child(14)::after {
+    animation-delay: .9s;
+}
+.text span:nth-child(15)::after {
+    animation-delay: 1.1s;
+}
+.text span:nth-child(16)::after {
+    animation-delay: 1.4s;
+}
+.text span:nth-child(17)::after {
+    animation-delay: 1.2s;
+}
+.text span:nth-child(18)::after {
+    animation-delay: 1s;
+}
+
+
+@keyframes revealCharacter {
+    0% {
+        transform: scaleY(1);
+    }
+    100% {
+        transform: scaleY(0);
+    }
+}
+
+@keyframes openCenterImage {
+    100% {
+        width: 20rem;
+    }
+}
+@keyframes openImage {
+    0% {
+        transform: scaleX(0);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+@keyframes zoomImage {
+    0% {
+        transform: scale(1.4);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+img {
+    animation: zoomImage 2s ease-out forwards;
+    animation-delay: .5s;
+}
+.imgWrap {
+    overflow: hidden;
+    border-radius: 1rem;
+    height: 11.7rem;
+    height: 15rem;
+    width: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 2rem;
+    position: relative;
+    /* Fix overflow bug */
+    -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+}
+.imgWrap.center {
+    width: 0;
+    animation: openCenterImage .9s ease forwards;
+    animation-delay: .6s;
+    transform: scaleX(1);
+}
+.imgWrap.small {
+    width: 10rem;
+}
+
+
+.imgWrap:not(.center)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    z-index: 99;
+    background: var(--bg);
+    transform-origin: left;
+    transition: all .3s ease;
+    animation: hideHorizontally 1s ease forwards;
+    animation-delay: .3s;
+}
+.imgWrap:not(.center)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    z-index: 99;
+    background: var(--bg);
+    transform-origin: right;
+    animation: hideHorizontally 1s ease forwards;
+    animation-delay: .3s;
+}
+
+@keyframes hideHorizontally {
+    0% {
+        transform: scaleX(1);
+    }
+    100% {
+        transform: scaleX(0);
+    }
+}
+
+.i1::before, .i1::after, .i1 img {
+    animation-delay: 1s !important;
+}
+.i2::before, .i2::after, .i2 img {
+    animation-delay: 1.5s !important;
+}
+.i3::before, .i3::after, .i3 img {
+    animation-delay: 1.2s !important;
+}
+.i4::before, .i4::after, .i4 img {
+    animation-delay: .8s !important;
+}
+
+
+/* /1* Additional *1/ */
+/* .row:hover { */
+/*     background: red; */
+/*     color: black; */
+/* } */
+/* .row:hover .imgWrap:not(.center)::after { */
+/*     background: red; */
+/* } */
+/* .row:hover .imgWrap:not(.center)::before { */
+/*     background: red; */
+/* } */
